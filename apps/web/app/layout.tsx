@@ -4,7 +4,7 @@ import { AppShell } from "../components/layout/AppShell";
 
 export const metadata: Metadata = {
   title: "RAILOPT AI",
-  description: "AI-powered automatic block planning prototype for Indian Railways (SIH26027)",
+  description: "AI-powered automatic block planning for Indian Railways — CDD Project",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

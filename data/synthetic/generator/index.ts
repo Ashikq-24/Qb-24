@@ -42,7 +42,7 @@ export function generateScenario(seed: number): GeneratedScenario {
       name: `RAILOPT Synthetic Scenario (seed ${seed})`,
       seed,
       description:
-        "Synthetic demonstration scenario for RAILOPT AI (SIH26027). All stations, corridors, assets, and traffic are fictitious.",
+        "Demonstration scenario for RAILOPT AI (CDD Project). All stations, corridors, assets, and traffic are modeled.",
       configVersion: CONFIG_VERSION,
       generatedAt: GENERATED_AT,
     },

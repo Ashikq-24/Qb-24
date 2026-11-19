@@ -2,7 +2,7 @@
   "name": "railopt-ai",
   "version": "0.1.0",
   "private": true,
-  "description": "RAILOPT AI - AI-powered automatic block planning prototype for SIH26027",
+  "description": "RAILOPT AI - AI-powered automatic block planning — CDD Project",
   "scripts": {
     "build": "pnpm -r --if-present run build",
     "lint": "pnpm -r --if-present run lint",

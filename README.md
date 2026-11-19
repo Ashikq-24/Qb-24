@@ -1,6 +1,6 @@
 # RAILOPT AI
 
-A decision-support prototype for **SIH26027** — *AI-Powered Automatic Block Planning to Maximize Asset Availability for Train Operations on Indian Railways* (Smart India Hackathon 2026, Ministry of Railways).
+A decision-support system for **CDD Project** — *AI-Powered Automatic Block Planning to Maximize Asset Availability for Train Operations on Indian Railways*.
 
 RAILOPT AI coordinates railway maintenance block planning across three departments (Engineering/P-Way, TRD, S&T), deciding what, when, where, and which tasks can be bundled — using a real OR-Tools CP-SAT optimization model over deterministic synthetic data, an independently-reimplemented validator, a deterministic traffic simulator, and a full what-if engine. Every number shown is produced by an actual solver run, priority computation, or simulation — never hardcoded.
 

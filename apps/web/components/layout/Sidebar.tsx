@@ -22,7 +22,7 @@ export function Sidebar() {
     <aside className="flex w-56 shrink-0 flex-col border-r border-rail-border bg-rail-panel">
       <div className="border-b border-rail-border px-4 py-4">
         <p className="text-sm font-bold tracking-wide text-white">RAILOPT AI</p>
-        <p className="text-[11px] text-slate-500">SIH26027 prototype</p>
+        <p className="text-[11px] text-slate-500">CDD project</p>
       </div>
       <nav className="flex-1 space-y-0.5 p-2">
         {NAV_ITEMS.map((item) => {

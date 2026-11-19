@@ -1,10 +1,7 @@
 # RAILOPT AI — Project Specification
 
-**Project:** RAILOPT AI
+**Project:** RAILOPT AI (CDD Project)
 **Full title:** AI-Powered Automatic Block Planning to Maximize Asset Availability for Train Operations on Indian Railways
-**Competition:** Smart India Hackathon 2026
-**Problem statement:** SIH26027
-**Organization:** Ministry of Railways
 
 ## Mission
 
