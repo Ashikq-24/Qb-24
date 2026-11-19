@@ -16,3 +16,5 @@ venv/
 *.tsbuildinfo
 data/synthetic/seeds/*.json
 !data/synthetic/seeds/seed-42.json
+data/real/Indian-Railway-Network-and-Delays/
+

@@ -9,6 +9,7 @@ import type { Corridor } from "../../lib/types";
 export default function CorridorsPage() {
   const [corridors, setCorridors] = useState<Corridor[]>([]);
   const [selected, setSelected] = useState<string | null>(null);
+  const [filterDivision, setFilterDivision] = useState<string>("REAL_ER");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -18,23 +19,44 @@ export default function CorridorsPage() {
     });
   }, []);
 
+  const displayedCorridors = corridors.filter((c) => {
+    if (filterDivision === "ALL") return true;
+    if (filterDivision === "REAL_ER") return c.division?.code?.startsWith("ER");
+    if (filterDivision === "SYNTHETIC") return !c.division?.code?.startsWith("ER");
+    return c.division?.code === filterDivision;
+  });
+
   return (
     <div className="space-y-4">
-      <div>
-        <h1 className="text-lg font-semibold text-white">Corridors</h1>
-        <p className="text-sm text-slate-400">Reference network topology - shared across scenarios. All geography is synthetic.</p>
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <div>
+          <h1 className="text-lg font-semibold text-white">Corridors</h1>
+          <p className="text-sm text-slate-400">Reference network topology for maintenance scheduling & train operations.</p>
+        </div>
+        <div className="flex items-center gap-2">
+          <label className="text-xs text-slate-400">Network View:</label>
+          <select
+            value={filterDivision}
+            onChange={(e) => setFilterDivision(e.target.value)}
+            className="rounded border border-rail-border bg-rail-panel px-3 py-1.5 text-xs text-slate-200 outline-none focus:border-rail-accent"
+          >
+            <option value="REAL_ER">Eastern Railway (Real Indian Railways)</option>
+            <option value="SYNTHETIC">Synthetic Network (Central & Western)</option>
+            <option value="ALL">All Networks Combined</option>
+          </select>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         <Card>
-          <CardHeader title="Network Diagram" />
+          <CardHeader title="Network Diagram" subtitle={filterDivision === "REAL_ER" ? "Real Indian Railways GPS Layout (Howrah - Dhanbad)" : undefined} />
           <div className="p-4">
-            <CorridorMap corridors={corridors} highlightCorridorId={selected} />
+            <CorridorMap corridors={displayedCorridors} highlightCorridorId={selected} />
           </div>
         </Card>
 
         <Card className="overflow-x-auto">
-          <CardHeader title="Corridors" subtitle={`${corridors.length} corridors`} />
+          <CardHeader title="Corridors" subtitle={`${displayedCorridors.length} corridors shown`} />
           <table className="w-full text-left text-sm">
             <thead>
               <tr className="border-b border-rail-border text-xs uppercase tracking-wide text-slate-500">
@@ -53,7 +75,7 @@ export default function CorridorsPage() {
                   </td>
                 </tr>
               ) : (
-                corridors.map((c) => (
+                displayedCorridors.map((c) => (
                   <tr
                     key={c.id}
                     onMouseEnter={() => setSelected(c.id)}

@@ -22,7 +22,9 @@ export default function BlockPlanningPage() {
     setLoading(true);
     Promise.all([api.getCorridors(), api.getBlockWindows(scenarioId), api.getTrainMovements(scenarioId), api.getPlans({ scenarioId })]).then(
       ([c, w, t, p]) => {
-        setCorridors(c);
+        const scenarioCorrIds = new Set([...w.map((win) => win.corridorId), ...t.map((tr) => tr.corridorId)]);
+        const activeCorridors = scenarioCorrIds.size > 0 ? c.filter((corr) => scenarioCorrIds.has(corr.id)) : c;
+        setCorridors(activeCorridors);
         setWindows(w);
         setTrains(t);
         setPlans(p);
